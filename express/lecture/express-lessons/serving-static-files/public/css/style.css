@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-family: monospace;
+    text-align: center;
+    font-weight: 100;
+    font-size: 40px;
+    color: #E60028;
+    letter-spacing: 10px;
+    text-decoration: underline;
+    text-decoration-color: plum;
+    text-decoration-style: wavy;
+}
+
+
+img {
+    width: 400px;
+}
