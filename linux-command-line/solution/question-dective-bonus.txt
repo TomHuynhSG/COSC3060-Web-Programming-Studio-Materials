@@ -1,0 +1,54 @@
+Let's break down the process step by step, highlighting the key command line tools used and the logical sequence of the investigation.
+
+1. Initial Clue Identification: The command grep "CLUE" crimescene is used to search for lines containing the word "CLUE" in the file crimescene:
+grep "CLUE" crimescene
+
+This yields three key clues:
+- CLUE: A tall male, at least 6'.
+- CLUE: Membership cards for AAA, Delta SkyMiles, the local library, and the Museum of Bash History.
+- CLUE: A woman named Annabel with blond spiky hair and a New Zealand accent.
+
+2. Identifying Potential Witnesses or Suspects: 
+grep Annabel people
+
+From the clue about "Annabel", four names are identified but we ignore two males name, only focus on two females:
+- Annabel Sun     F       26      Hart Place, line 40
+- Annabel Church  F       38      Buckingham Place, line 179
+These names are found in the respective locations (Hart Place and Buckingham Place) using the head and tail commands, which are used to access specific lines from these files in the interview.
+
+3. Finding the Interview Reference: 
+head -n 40 streets/Hart_Place | tail -n 1
+head -n 179  streets/Buckingham_Place | tail -n 1
+The lines from Hart Place and Buckingham Place suggest interviews with numbers #47246024 and #699607, respectively. These interviews could provide more information.
+
+4. Interviews Content: We will use these commands to find more information about the interview:
+cat interviews/interview-47246024
+cat interviews/interview-699607
+
+Only the interview 699607 mentions something worthy:
+"...the car that fled the scene.  Describes it as a blue Honda, with a license plate that starts with "L337" and ends with "9""
+
+
+5. Vehicle Information: The clue about a blue Honda with a specific license plate pattern is explored using grep -A 5 "L337" vehicles. 
+This displays each matching license plate along with the next five lines of information, revealing details about the car's owner, make, color, and the owner's physical characteristics.
+We run this command to find all information about the car with license starting with "L337":
+grep -A 5 "L337" vehicles
+
+We finally got these four suspects who is more than 6 foot tall, owning the Honda Blue with the car license starting with L337:
+- Erika Owens
+- Joe Germuska
+- Jeremy Bowers
+- Jacqui Maher
+
+So several individuals are identified as owning a blue Honda with a license plate matching the pattern "L337xxx9"!
+Their physical descriptions are checked against the initial clue of a tall male, at least 6'!
+
+6. Cross-referencing Memberships: To further narrow down the suspects, run the command inside the memberships folder:
+cat AAA Delta_SkyMiles Terminal_City_Library Museum_of_Bash_History | grep "Name" | wc -l 
+
+with the "Name" is the name of the suspect. 
+This command concatenates the contents of the membership files and then counts the occurrences of each suspect’s name. 
+It turns out that Jacqui Maher and Jeremy Bowers are members of all the clubs mentioned in the clue.
+
+7. Final Confirmation: Finally, using "grep "Jeremy Bowers" people", Jeremy Bowers is confirmed as a MALE, fitting the initial clue of a tall male suspect. In constrast, "Jacqui Maher" is a female!
+His address is also identified as Dunstable Road.
