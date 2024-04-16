@@ -1,0 +1,53 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background: #f5f5f5; /* Adjust the background color as needed */
+}
+
+.column {
+    width: 33.3333%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #ffffff; /* Adjust if the columns have a different background color */
+    margin: 10px; /* Adjust margin for spacing between columns */
+    border-radius: 4px; /* Adjust if the columns have rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adjust for shadow effect */
+    text-align: center;
+}
+
+img {
+    width: 30%; 
+    height: auto;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5em; /* Adjust the font size as needed */
+    color: #333333; /* Adjust the color as needed */
+    margin: 0 0 10px 0;
+}
+
+.content p {
+    font-size: 0.9em; /* Adjust the font size as needed */
+    line-height: 1.6;
+    color: #666666; /* Adjust the color as needed */
+    margin-bottom: 20px; /* Adjust for spacing between the paragraph and the link */
+}
+
+.cta-link {
+    text-decoration: none;
+    color: #0066cc; /* Adjust the link color as needed */
+    font-weight: bold;
+    background-color: #f0f0f0; /* Adjust the background color as needed */
+    padding: 10px 15px;
+    border-radius: 2px; /* Adjust if the button has rounded corners */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-link:hover {
+    background-color: #e6e6e6; /* Adjust for hover state */
+    color: #004499; /* Adjust color for hover state */
+}
