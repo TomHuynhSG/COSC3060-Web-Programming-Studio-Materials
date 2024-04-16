@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin:20px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+<!-- CAN focus any input element by default -->
+<label for="username">Username</label>
+<input type="text" name="username">
+
+</div>
+<div>
+    <label for="email">Email</label>
+    <!-- CANNOT focus this element due to tabindex="-1" -->
+    <input tabindex="-1" type="text" name="email">
+</div>
+<div>
+<!-- CAN focus this element due to tabindex="0" -->
+<span tabindex="0">Can focus this element</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
