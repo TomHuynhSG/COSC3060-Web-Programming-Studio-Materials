@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Submit Form Example</title>
+   <style>
+      .submitButton {
+         padding: 10px 20px;
+         background-color: #337ab7;
+         color: #fff;
+         cursor: pointer;
+      }
+   </style>
+</head>
+<body>
+   <div id="errorMessage"></div>
+   <form id="myForm">
+      <div>
+         <label for="nameInput">Name:</label>
+         <input type="text" id="nameInput" placeholder="Enter your name">
+      </div>
+      <div>
+         <div class="submitButton" id="submitBtn">Submit</div>
+      </div>
+   </form>
+
+   <script>
+    document.querySelector('#submitBtn').addEventListener('click', myValidate); // For clicking on div   
+    document.querySelector('#myForm').addEventListener('submit', myValidate); // For using 'enter'
+    
+    function myValidate(event) {
+         event.preventDefault();
+
+         var nameInput = document.querySelector('#nameInput').value;
+
+         if (nameInput === '') {
+            var errorMessageDiv = document.querySelector('#errorMessage');
+            errorMessageDiv.textContent = 'Please enter your name.';
+            setTimeout(function() {
+               errorMessageDiv.textContent = '';
+            }, 2000);
+         } else {
+            // Form is valid, perform further actions or submit the form to a server
+            console.log('Submitted name:', nameInput);
+            // Add your code here to submit the form or perform additional actions
+         }
+      }
+   </script>
+</body>
+</html>
