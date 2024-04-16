@@ -5,23 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Example</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .submitButton:focus {
+            outline: 2px solid blue; /* Visual focus indicator */
+        }
+    </style>
+        
 </head>
 <body>
     <div id="errorMessage"></div>
     <form id="myForm">
         <div>
+            <label for="nameInput">Name:</label>
             <input type="text" id="nameInput" placeholder="Name">
         </div>
         <div>
+            <label for="emailInput">Email Address:</label>
             <input type="email" id="emailInput" placeholder="Email Address">
         </div>
         <div>
+            <label for="phoneInput">Phone Number:</label>
             <input type="tel" id="phoneInput" placeholder="Phone Number">
         </div>
         <div>
-            <div class="submitButton">Submit</div>
+            <div class="submitButton" role="button" tabindex="0">Submit</div>
         </div>
     </form>
     <script src="script.js"></script>
+    <script>
+        document.querySelector('.submitButton').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                alert(`Key pressed: ${event.key}`);
+            }
+        });
+    </script>
+        
 </body>
 </html>
