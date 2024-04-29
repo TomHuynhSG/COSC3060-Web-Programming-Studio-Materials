@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Replace my Mongodb Atlas connection string to your valid connection string 
 mongoose.connect('mongodb+srv://tomhuynhsg:mypassword@cluster0.hsxbnte.mongodb.net/?retryWrites=true&w=majority')
 .then(() => console.log('Connected to MongoDB Atlas'))
 .catch((error) => console.log(error.message));

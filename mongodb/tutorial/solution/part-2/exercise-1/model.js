@@ -1,5 +1,7 @@
 // Setting up the connection to MongoDB Atlas using Mongoose here
 const mongoose = require('mongoose');
+
+// Replace my Mongodb Atlas connection string to your valid connection string 
 mongoose.connect('mongodb+srv://tomhuynh:mypassword@mydatabasecluster.6ydmoyi.mongodb.net/?retryWrites=true&w=majority&appName=MyDatabaseCluster')
 .then(() => console.log('Connected to MongoDB Atlas'))
 .catch((error) => console.log(error.message));

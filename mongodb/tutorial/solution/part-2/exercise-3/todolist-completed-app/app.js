@@ -8,6 +8,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Replace my Mongodb Atlas connection string to your valid connection string 
 mongoose.connect("mongodb+srv://tomhuynh:mypassword@cluster0.coimmkg.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true})
   .then(() => {
     console.log("Connected to MongoDB Atlas");
