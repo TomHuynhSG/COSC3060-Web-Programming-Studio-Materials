@@ -1,5 +1,5 @@
 // import the schema objects from model.js
-const { User, Post, Comment, Category }= require('./model');
+const { User, Post, Comment, Category } = require('./model');
 
 // Create example documents
 
