@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Family Registration</title>
+    <style>
+        fieldset {
+            margin-bottom: 10px;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+        }
+
+        .family-member {
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Registration</legend>
+        <form id="registrationForm">
+            <label for="firstName">*First name</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <span class="error" id="firstNameError"></span>
+
+            <label for="email">*Email</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError"></span>
+
+            <label for="phoneNumber">*Phone number</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
+            <span class="error" id="phoneNumberError"></span>
+
+            <label for="numFamilyMembers">*Number of additional family members</label>
+            <input type="number" id="numFamilyMembers" name="numFamilyMembers" min="0" required>
+            <span class="error" id="numFamilyMembersError"></span>
+
+            <div id="familyMembers"></div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </fieldset>
+
+    <script src="script.js"></script>
+</body>
+</html>
