@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Captain America Shield</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas element to draw Captain America's shield -->
+    <canvas id="shield" width="400" height="400"></canvas>
+
+    <script>
+        // Get the canvas context for drawing
+        const canvas = document.getElementById("shield");
+        const ctx = canvas.getContext("2d");
+
+        /**
+         * Draw a filled circle.
+         * @param {number} x - The x-coordinate of the circle's center.
+         * @param {number} y - The y-coordinate of the circle's center.
+         * @param {number} radius - The radius of the circle.
+         * @param {string} color - The color of the circle.
+         */
+        function drawCircle(x, y, radius, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false); // Draw a full circle
+            ctx.closePath();
+            ctx.fillStyle = color; // Set the circle color
+            ctx.fill(); // Fill the circle with the specified color
+        }
+
+        /**
+         * Draw a star using explicit coordinates for each line.
+         * @param {number} cx - The x-coordinate of the star's center.
+         * @param {number} cy - The y-coordinate of the star's center.
+         * @param {number} spikes - The number of points on the star.
+         * @param {number} outerRadius - The outer radius of the star.
+         * @param {number} innerRadius - The inner radius of the star.
+         * @param {string} color - The color of the star.
+         */
+        function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
+            const step = Math.PI / spikes; // Angle between star points
+            let rotation = Math.PI / 2 * 3; // Initial rotation angle
+
+            // Calculate the points for the star
+            const points = [];
+            for (let i = 0; i < spikes; i++) {
+                // Outer point
+                const xOuter = cx + Math.cos(rotation) * outerRadius;
+                const yOuter = cy + Math.sin(rotation) * outerRadius;
+                points.push({ x: xOuter, y: yOuter });
+                rotation += step;
+
+                // Inner point
+                const xInner = cx + Math.cos(rotation) * innerRadius;
+                const yInner = cy + Math.sin(rotation) * innerRadius;
+                points.push({ x: xInner, y: yInner });
+                rotation += step;
+            }
+
+            // Draw lines between the calculated points
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (const point of points) {
+                ctx.lineTo(point.x, point.y);
+            }
+            ctx.lineTo(points[0].x, points[0].y); // Close the star
+            ctx.closePath();
+            ctx.fillStyle = color; // Set the star color
+            ctx.fill(); // Fill the star with the specified color
+        }
+
+        /**
+         * Draw Captain America's shield.
+         */
+        function drawShield() {
+            const x = canvas.width / 2; // Center of the canvas horizontally
+            const y = canvas.height / 2; // Center of the canvas vertically
+
+            // Draw the shield rings from outermost to innermost
+            drawCircle(x, y, 190, "#ff0000");  // Red outer ring
+            drawCircle(x, y, 150, "#ffffff");  // White ring
+            drawCircle(x, y, 110, "#ff0000");  // Red ring
+            drawCircle(x, y, 70, "#000080");   // Blue circle
+
+            // Draw the white star in the center
+            drawStar(x, y, 5, 70, 28, "#ffffff");
+        }
+
+        // Call the drawShield function to draw the shield
+        drawShield();
+    </script>
+</body>
+</html>
