@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Anime List</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Top 10 Anime</h1>
+    <div class="anime-container">
+        <% animeList.slice(0, 10).forEach(anime => { %>
+            <div class="anime-item">
+                <img src="<%= anime.images.jpg.image_url %>" alt="<%= anime.title %>">
+                <h2><%= anime.title %></h2>
+                <p>Score: <%= anime.score %></p>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
