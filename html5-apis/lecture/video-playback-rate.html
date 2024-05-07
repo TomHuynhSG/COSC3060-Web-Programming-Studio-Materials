@@ -1,0 +1,48 @@
+<!--
+  From https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_manipulation
+-->
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Video playback</title>
+</head>
+
+<body>
+  <video id="my-video" controls="true" width="480" height="270" crossorigin="anonymous">
+    <source src="https://saturn.csit.rmit.edu.au/~e07582/ws/wk1/video/lk-open-scene.mp4" type="video/mp4" />
+  </video>
+  <div class="playable-buttons">
+    <input id="edit" type="button" value="Edit" />
+    <input id="reset" type="button" value="Reset" />
+  </div>
+  <textarea id="code" style="width:480px; height:150px;">
+const myVideo = document.getElementById('my-video');
+myVideo.playbackRate = 2;
+</textarea>
+  <script>
+    const textarea = document.getElementById("code");
+    const reset = document.getElementById("reset");
+    const edit = document.getElementById("edit");
+    const code = textarea.value;
+
+    function setPlaybackRate() {
+      eval(textarea.value);
+    }
+
+    reset.addEventListener("click", () => {
+      textarea.value = code;
+      setPlaybackRate();
+    });
+
+    edit.addEventListener("click", () => {
+      textarea.focus();
+    });
+
+    textarea.addEventListener("input", setPlaybackRate);
+    window.addEventListener("load", setPlaybackRate);
+  </script>
+</body>
+
+</html>

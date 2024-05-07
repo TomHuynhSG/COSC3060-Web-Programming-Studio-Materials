@@ -1,0 +1,54 @@
+<!--
+  On coreteaching servers this page will only work over HTTPS.
+-->
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Geolocation example</title>
+    <style>
+    .blink {
+      animation: blink 1s steps(5, start) infinite;
+    }
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+    </style>
+  </head>
+<body>
+  <p id="content">Geolocation example</p>
+  <p><button id="run">Show position</button></p>
+  <script>
+    const content = document.getElementById('content');
+    const run = document.getElementById('run');
+
+    function locationSuccess(position) {
+      const coords = position.coords.latitude + ', ' + position.coords.longitude;
+      console.log('lat, lon: ' + coords);
+      content.textContent = 'The current location latitude and longitude are: ' + coords;
+    }
+
+    function locationError(err) {
+      console.warn(err)
+      content.textContent = 'The was an error: ' + err.code + ', ' + err.message;
+    }
+
+    function locationRun() {
+      console.log("getting position...");
+      content.innerHTML = '<marquee><span class="blink">Getting location information, please wait...</span></marquee>';
+      navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+    }
+
+    if ("geolocation" in navigator) {
+      run.addEventListener('click', function() {
+        locationRun();
+      });
+    } else {
+      console.log("geolocation is not supported by your browser");
+      content.textContent = 'Geolocation is not supported by your browser';
+    }
+  </script>
+</body>
+</html>

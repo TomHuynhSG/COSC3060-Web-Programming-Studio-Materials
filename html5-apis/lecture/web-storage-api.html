@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web storage example</title>
+  </head>
+<body>
+
+<form id="wishlist-form">
+  <label>What do you want for your birthday?</label>
+  <input type="text" name="wishlist-item" id="wishlist-item">
+  <button type="submit">Add to Wishlist</button>
+  <button id="del">Delete Local Storage</button>
+</form>
+
+<ol id="wishlist"></ol>
+<script>
+  var form = document.getElementById('wishlist-form');
+  var wishlistItem = document.getElementById('wishlist-item');
+  var wishlist = document.getElementById('wishlist');
+  var delButton = document.getElementById('del');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // don't submit the form
+    if (wishlistItem.value.length < 1) return; // ignore emtpy input
+
+    console.log('Adding: ' + wishlistItem.value);
+
+    // append item to the wishlist
+    wishlist.innerHTML += '<li>' + wishlistItem.value + '</li>';
+
+    // clear form input
+    wishlistItem.value = '';
+
+    // save current wishlist to localStorage
+    localStorage.setItem('wishlistItems', wishlist.innerHTML);
+  });
+
+  delButton.addEventListener('click', function(e) {
+    console.log('Removing wishlist data...');
+    localStorage.removeItem('wishlistItems');
+  });
+
+  // check for saved wishlist items, `getItem` returns `null` or a string
+  var saved = localStorage.getItem('wishlistItems');
+  if (saved) {
+    wishlist.innerHTML = saved;
+  }
+</script>
+</body>
+</html>

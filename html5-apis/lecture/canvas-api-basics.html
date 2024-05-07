@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas basic</title>
+  </head>
+<body>
+  <canvas id="canvas" width="200" height="100">
+    <marquee>Canvas API not supported</marquee>
+  </canvas>
+  <script>
+    function draw() {
+      const canvas = document.getElementById('canvas')
+      if (canvas.getContext) {
+        const ctx = document.getElementById('canvas').getContext('2d');
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+
+        ctx.font = '30px Times New Roman';
+        ctx.fillStyle = 'Blue';
+        ctx.fillText('Hypermedia', 5, 30);
+      }
+    }
+    draw();
+  </script>
+</body>
+</html>
