@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Example</title>
+    <script>
+        // Function to create a cookie
+        function createCookie() {
+            var date = new Date();
+            date.setTime(date.getTime() + (24 * 60 * 60 * 1000)); // 24 hours
+            var expires = "expires=" + date.toUTCString();
+            document.cookie = "userSession=123456; " + expires + "; path=/";
+        }
+
+        // Function to read a cookie
+        function readCookie() {
+            var name = "userSession=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    document.getElementById("cookieValue").innerHTML = "Cookie Value: " + c.substring(name.length, c.length);
+                    return;
+                }
+            }
+            document.getElementById("cookieValue").innerHTML = "Cookie not found";
+        }
+
+        // Function to delete a cookie
+        function deleteCookie() {
+            document.cookie = "userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            alert("Cookie deleted successfully");
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="createCookie()">Create Cookie</button>
+    <button onclick="readCookie()">Read Cookie</button>
+    <button onclick="deleteCookie()">Delete Cookie</button>
+    <p id="cookieValue"></p> <!-- Display area for cookie value -->
+</body>
+
+</html>
