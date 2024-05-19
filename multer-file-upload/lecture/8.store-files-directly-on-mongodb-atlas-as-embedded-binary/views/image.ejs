@@ -1,0 +1,17 @@
+<!-- views/image.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Preview</title>
+</head>
+<body>
+  <h1>Image Preview</h1>
+  <h2>Name: <%= image.name %></h2>
+  <img src="/image/data/<%= image._id %>" alt="<%= image.name %>" style="max-width: 100%; height: auto;">
+  <p>Content Type: <%= image.contentType %></p>
+  <h3>Base64 Representation of this image in the database:</h3>
+  <textarea rows="10" cols="80"><%= base64Image %></textarea>
+</body>
+</html>
