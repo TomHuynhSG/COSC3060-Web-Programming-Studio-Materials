@@ -50,7 +50,11 @@ app.get('/', (req, res) => res.render('index'));
 app.post('/upload', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
-      res.send(err);
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        res.send('Error: File size too large!');
+      } else {
+        res.send(err);
+      }
     } else {
       if (req.file == undefined) {
         res.send('No file selected.');
