@@ -34,7 +34,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     res.redirect(`/image/${img._id}`);
 });
 
-
+// This route is defined to render the EJS page showing the image and its metadata
 app.get('/image/:id', async (req, res) => {
     const image = await Image.findById(req.params.id);
     if (!image) {
@@ -46,6 +46,7 @@ app.get('/image/:id', async (req, res) => {
     res.render('image', { image, base64Image });
 });
 
+// This route is defined to fetch and serve the actual image data from the database.
 app.get('/image/data/:id', async (req, res) => {
     const image = await Image.findById(req.params.id);
     if (!image) {
