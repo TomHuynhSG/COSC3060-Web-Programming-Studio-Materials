@@ -7,8 +7,6 @@ const session = require('express-session');
 // Import the Passport library for authentication
 const passport = require('passport');
 
-
-
 // Require Passport configuration file (this should set up the strategies)
 require('./config/passport-setup');
 
