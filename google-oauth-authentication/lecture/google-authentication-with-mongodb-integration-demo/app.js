@@ -3,6 +3,9 @@ require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
+const mongoose = require('./config/mongoose');
+const User = require('./models/User');
+
 
 // Import the Passport library for authentication
 const passport = require('passport');
