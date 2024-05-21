@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>Welcome</h1>
+  <% if (user) { %>
+    <p>Hello, <%= user.displayName %>!</p>
+    <p>Email: <%= user.emails[0].value %></p>
+    <img src="<%= user.photos[0].value %>" alt="Profile Picture">
+    <a href="/logout">Logout</a>
+  <% } else { %>
+    <a href="/login">Login</a>
+  <% } %>
+</body>
+</html>
