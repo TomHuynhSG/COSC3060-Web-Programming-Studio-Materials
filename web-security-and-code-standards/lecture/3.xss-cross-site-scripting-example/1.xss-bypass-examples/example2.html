@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Example 2</title>
+</head>
+<body>
+    <h1>XSS Example 2</h1>
+    <!-- These examples are still for educational purposes and should not be used on live or production systems due to security risks. -->
+    <!-- XSS payload -->
+    <a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTIEV4YW1wbGUgMik7PC9zY3JpcHQ+" onclick="event.preventDefault();">Click me for Example 2</a>
+</body>
+</html>
