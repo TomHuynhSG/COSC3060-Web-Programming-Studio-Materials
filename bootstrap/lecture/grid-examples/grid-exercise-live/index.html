@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Grid Layout Exercises</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bootstrap Grid Layout Exercises for COSC3060</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
+        crossorigin="anonymous">
   <style>
     body {
-      margin-top: 50px;
       background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-
-    h1 {
+    header, footer {
       text-align: center;
+      padding: 10px;
+      background-color: #4285f4;
+      color: white;
     }
-
+    h1 {
+      margin: 0;
+    }
     .flex-container {
       font-family: Arial, sans-serif;
       display: flex;
@@ -25,8 +31,8 @@
       justify-content: start;
       margin-top: 50px;
       border-bottom: 50px solid transparent;
+      flex: 1;
     }
-
     textarea {
       width: 100%;
       min-height: 150px;
@@ -34,7 +40,6 @@
       font-family: monospace;
       background-color: #ddd;
     }
-
     button {
       margin-top: 10px;
       padding: 10px 20px;
@@ -44,205 +49,784 @@
       border: none;
       cursor: pointer;
     }
-
-    .parent {
+    .parent, .test-parent {
       width: 80%;
       background-color: #ddd;
       padding: 20px;
       margin: 1rem;
     }
-
+    /* Layout Title Styling */
+    .layout-title {
+      font-weight: bold;
+      background-color: #e0e0e0;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    /* Styling for target layout child boxes */
     .child {
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+    }
+    /* Pre-defined target layout colors for exercises */
+    /* Exercise 1: Seagreen */
+    .child { background-color: seagreen; }
+    /* Exercise 2: Salmon */
+    .test2 { background-color: salmon; }
+    /* Exercise 3: Royalblue */
+    .test3 { background-color: royalblue; }
+    /* Exercises 4 - 10 unique colors */
+    .ex4child { background-color: mediumorchid; }
+    .ex5child { background-color: teal; }
+    .ex6child { background-color: darkorange; }
+    .ex7child { background-color: slateblue; }
+    .ex8child { background-color: mediumseagreen; }
+    .ex9child { background-color: steelblue; }
+    .ex10child { background-color: crimson; }
+    
+    /* Ensure current layout boxes use the same color formatting as the target layout.
+       Even if the student’s code does not include the proper classes, we target by ID. */
+    #test1 .row > div {
       background-color: seagreen;
       color: white;
       font-size: 18px;
       padding: 20px;
       border: 2px solid white;
+      text-align: center;
     }
-
-    .test-parent {
-      width: 80%;
-      background-color: #ddd;
-      padding: 20px;
-      margin: 1rem;
-    }
-
-    .test-parent>*>* {
-      background-color: darkviolet;
-      color: white;
-      font-size: 18px;
-      padding: 20px;
-      border: 2px solid goldenrod;
-    }
-
-    .test2 {
+    #test2 .row > div {
       background-color: salmon;
       color: white;
       font-size: 18px;
       padding: 20px;
       border: 2px solid white;
+      text-align: center;
     }
-
-    .solution2>*>* {
-      background-color: cadetblue;
-      color: white;
-      font-size: 18px;
-      padding: 20px;
-      border: 2px solid white;
-    }
-
-    .test3 {
+    #test3 .row > div {
       background-color: royalblue;
       color: white;
       font-size: 18px;
       padding: 20px;
       border: 2px solid white;
+      text-align: center;
     }
-
-    .solution3>*>* {
-      background-color: darkslategrey;
+    #test4 .row > div {
+      background-color: mediumorchid;
       color: white;
       font-size: 18px;
       padding: 20px;
       border: 2px solid white;
+      text-align: center;
     }
-    p{
-        margin-bottom: 0;
+    #test5 .row > div {
+      background-color: teal;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
     }
-
-    .instructions{
+    #test6 .row > div {
+      background-color: darkorange;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+    }
+    #test7 .row > div {
+      background-color: slateblue;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+    }
+    #test8 .row > div {
+      background-color: mediumseagreen;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+    }
+    #test9 .row > div {
+      background-color: steelblue;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+    }
+    #test10 .row > div {
+      background-color: crimson;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid white;
+      text-align: center;
+    }
+    
+    .instructions {
       width: 80%;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    .hint {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+    }
+    details {
+      margin-top: 10px;
+      width: 80%;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    footer {
+      margin-top: auto;
     }
   </style>
-  
 </head>
-
 <body>
-  <h1>Bootstrap Grid Layout Exercise</h1>
+  <header>
+    <h1>Bootstrap Grid Layout Exercises for COSC3060</h1>
+  </header>
 
+  <!-- ========== Exercise 1: Simple Two-Column Layout ========== -->
   <div class="flex-container">
-    <h2>Exercise 1</h2>
-    <div class="instructions">Trying to make this layout:
-      <ul>
-            <li>Each div will take up 50% of the container's width on extra-large screens (1200px and up) and 100% of the width on screens smaller than that, stacking the divs vertically.</li>
-            <li>Trying to figure out the target layout by resizing the window and try to match it with your current layout!</li>
-      </ul>
+    <h2>Exercise 1: Simple Two-Column Layout</h2>
+    <div class="instructions">
+      <p>Goal: Create two columns that take up 50% of the width on extra-large screens (1200px and up) and 100% on smaller screens (stacked vertically).</p>
+      <p class="hint">Hint: Use the <code>col-xl-6</code> class for each column.</p>
     </div>
-    <p>The target layout:</p>
+    <p class="layout-title">The target layout:</p>
     <div class="container parent">
       <div class="row">
         <div class="col-xl-6 child">50% desktop, 100% mobile</div>
         <div class="col-xl-6 child">50% desktop, 100% mobile</div>
       </div>
     </div>
-    <p>Your current layout:</p>
+    <p class="layout-title">Your current layout:</p>
     <div class="container test-parent" id="test1">
       <div class="row">
-        <div class="">50% desktop, 100% mobile</div>
-        <div class="">50% desktop, 100% mobile</div>
+        <div>50% desktop, 100% mobile</div>
+        <div>50% desktop, 100% mobile</div>
       </div>
     </div>
     <div class="container">
-      <textarea id="test-1-code" placeholder="Write your CSS code here..." rows="5">
-<!-- Modify the HTML code for the purple boxes below so it behaves like the green ones. -->
-  <div class="row">
-    <div class="">50% desktop, 100% mobile</div>
-    <div class="">50% desktop, 100% mobile</div>
-  </div>
-  
-    </textarea>
+      <textarea id="test-1-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap grid classes -->
+<div class="row">
+  <div>50% desktop, 100% mobile</div>
+  <div>50% desktop, 100% mobile</div>
+</div>
+      </textarea>
     </div>
-
     <button onclick="applyTest1()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-xl-6"&gt;50% desktop, 100% mobile&lt;/div&gt;
+  &lt;div class="col-xl-6"&gt;50% desktop, 100% mobile&lt;/div&gt;
+&lt;/div&gt;
 
+Explanation:
+- The <code>.row</code> class creates a flex container to hold the columns.
+- <code>.col-xl-6</code> divides the row into 12 equal parts and assigns 6 parts to each column (50% each) on extra-large screens.
+- On smaller screens, columns automatically stack.
+      </pre>
+    </details>
     <script>
       function applyTest1() {
-        const userCss = document.getElementById('test-1-code').value;
-        const test1 = document.getElementById('test1');
-        test1.innerHTML = userCss;
+        const userCode = document.getElementById('test-1-code').value;
+        document.getElementById('test1').innerHTML = userCode;
       }
     </script>
   </div>
 
+  <!-- ========== Exercise 2: Responsive Mixed-Column Layout ========== -->
   <div class="flex-container">
-    <h2>Exercise 2</h2>
-    <div class="instructions">Trying to figure out how responsive target layout is by resizing the browser window and try to match it with your current layout!</div>
-    <p>The target layout:</p>
+    <h2>Exercise 2: Responsive Mixed-Column Layout</h2>
+    <div class="instructions">
+      <p>Goal: Create three columns with different widths on large screens but adjust on smaller devices.</p>
+      <p class="hint">Hint: Use classes like <code>col-lg-6</code>, <code>col-lg-3</code>, and <code>col-sm-12</code> as needed.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
     <div class="container parent">
       <div class="row">
-        <div class="col-lg-6 col-sm-12 col-10 child test2">Column 1</div>
-        <div class="col-lg-3 col-sm-6 col-10 child test2">Column 2</div>
-        <div class="col-lg-3 col-sm-6 col-10 child test2">Column 3</div>
+        <div class="col-lg-6 col-sm-12 child test2">Column 1</div>
+        <div class="col-lg-3 col-sm-6 child test2">Column 2</div>
+        <div class="col-lg-3 col-sm-6 child test2">Column 3</div>
       </div>
     </div>
-    <p>Your current layout:</p>
-    <div class="container test-parent  solution2" id="test2">
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test2">
       <div class="row">
-        <div class="">Column 1</div>
-        <div class="">Column 2</div>
-        <div class="">Column 3</div>
+        <div>Column 1</div>
+        <div>Column 2</div>
+        <div>Column 3</div>
       </div>
     </div>
     <div class="container">
-      <textarea id="test-2-code" rows="5">
-  <!-- Modify the HTML below to make the light green boxes behave like the red ones. -->
-  <div class="row">
-    <div class="">Column 1</div>
-    <div class="">Column 2</div>
-    <div class="">Column 3</div>
-  </div>
-      
-        </textarea>
+      <textarea id="test-2-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</div>
+      </textarea>
     </div>
-
     <button onclick="applyTest2()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-lg-6 col-sm-12"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col-lg-3 col-sm-6"&gt;Column 2&lt;/div&gt;
+  &lt;div class="col-lg-3 col-sm-6"&gt;Column 3&lt;/div&gt;
+&lt;/div&gt;
 
+Explanation:
+- <code>.col-lg-6</code> makes Column 1 take 50% of the width on large screens.
+- <code>.col-lg-3</code> assigns 25% each to Columns 2 and 3 on large screens.
+- The <code>col-sm-*</code> classes ensure proper stacking or side-by-side alignment on smaller devices.
+      </pre>
+    </details>
     <script>
       function applyTest2() {
-        const userCss = document.getElementById('test-2-code').value;
-        const test1 = document.getElementById('test2');
-        test1.innerHTML = userCss;
+        const userCode = document.getElementById('test-2-code').value;
+        document.getElementById('test2').innerHTML = userCode;
       }
     </script>
   </div>
+
+  <!-- ========== Exercise 3: Advanced Responsive Proportions ========== -->
   <div class="flex-container">
-    <h2>Exercise 3</h2>
-    <div class="instructions">Trying to figure out how responsive target layout is by resizing the browser window and try to match it with your current layout!</div>
-    <p>The target layout:</p>
+    <h2>Exercise 3: Advanced Responsive Proportions</h2>
+    <div class="instructions">
+      <p>Goal: Create a layout where the first column takes a small portion of the width on extra-large screens and expands on smaller devices, while the second column takes up the remaining space.</p>
+      <p class="hint">Hint: Use multiple breakpoint classes like <code>col-xxl-1</code>, <code>col-xl-2</code>, etc.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
     <div class="container parent">
       <div class="row">
         <div class="col-xxl-1 col-xl-2 col-lg-4 col-md-6 col-sm-12 child test3">Column 1</div>
         <div class="col-xxl-11 col-xl-10 col-lg-8 col-md-6 col-sm-12 child test3">Column 2</div>
       </div>
     </div>
-    <p>Your current layout:</p>
-    <div class="container test-parent  solution3" id="test3">
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test3">
       <div class="row">
-        <div class="">Column 1</div>
-        <div class="">Column 2</div>
+        <div>Column 1</div>
+        <div>Column 2</div>
       </div>
     </div>
     <div class="container">
-      <textarea id="test-3-code" rows="5">
-      <!-- Modify the HTML below to make the dark boxes behave like the blue ones. -->
-      <div class="row">
-        <div class="">Column 1</div>
-        <div class="">Column 2</div>
-      </div>
-          
-            </textarea>
+      <textarea id="test-3-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row">
+  <div>Column 1</div>
+  <div>Column 2</div>
+</div>
+      </textarea>
     </div>
-
     <button onclick="applyTest3()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-xxl-1 col-xl-2 col-lg-4 col-md-6 col-sm-12"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col-xxl-11 col-xl-10 col-lg-8 col-md-6 col-sm-12"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;
 
+Explanation:
+- The combination of breakpoint classes (e.g., <code>col-xxl-1</code>, <code>col-xl-2</code>) makes Column 1 narrow on extra-large screens and wider on smaller screens.
+- Column 2 fills the remaining space.
+- This flexible setup adapts to various screen sizes.
+      </pre>
+    </details>
     <script>
       function applyTest3() {
-        const userCss = document.getElementById('test-3-code').value;
-        const test1 = document.getElementById('test3');
-        test1.innerHTML = userCss;
+        const userCode = document.getElementById('test-3-code').value;
+        document.getElementById('test3').innerHTML = userCode;
       }
     </script>
   </div>
-</body>
 
+  <!-- ========== Exercise 4: Three Equal Columns ========== -->
+  <div class="flex-container">
+    <h2>Exercise 4: Three Equal Columns</h2>
+    <div class="instructions">
+      <p>Goal: Create a row with three columns of equal width on medium (md) screens and larger. On smaller screens, the columns should stack.</p>
+      <p class="hint">Hint: Try using the <code>col-md-4</code> class on each column.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row">
+        <div class="col-md-4 child ex4child">Column 1</div>
+        <div class="col-md-4 child ex4child">Column 2</div>
+        <div class="col-md-4 child ex4child">Column 3</div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test4">
+      <div class="row">
+        <div>Column 1</div>
+        <div>Column 2</div>
+        <div>Column 3</div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-4-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest4()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-md-4"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col-md-4"&gt;Column 2&lt;/div&gt;
+  &lt;div class="col-md-4"&gt;Column 3&lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- <code>.col-md-4</code> divides the row equally into three columns (4 out of 12 parts each) on medium screens and up.
+- On smaller screens, the columns will stack vertically.
+      </pre>
+    </details>
+    <script>
+      function applyTest4() {
+        const userCode = document.getElementById('test-4-code').value;
+        document.getElementById('test4').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <!-- ========== Exercise 5: Nested Rows and Columns ========== -->
+  <div class="flex-container">
+    <h2>Exercise 5: Nested Rows and Columns</h2>
+    <div class="instructions">
+      <p>Goal: Create a parent row with two columns. Inside the first column, nest another row with two columns.</p>
+      <p class="hint">Hint: Write HTML inside the first column’s div to create a nested grid using another <code>.row</code>.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row">
+        <div class="col-md-6 child ex5child">
+          <div class="row">
+            <div class="col-6 child">Nested 1</div>
+            <div class="col-6 child">Nested 2</div>
+          </div>
+        </div>
+        <div class="col-md-6 child ex5child">Column 2</div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test5">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Insert nested row here -->
+          Nested Content
+        </div>
+        <div class="col-md-6">Column 2</div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-5-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes and nested structure -->
+<div class="row">
+  <div>
+    <!-- Create nested row -->
+    <div class="row">
+      <div>Nested 1</div>
+      <div>Nested 2</div>
+    </div>
+  </div>
+  <div>Column 2</div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest5()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-md-6"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-6"&gt;Nested 1&lt;/div&gt;
+      &lt;div class="col-6"&gt;Nested 2&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-6"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- The parent <code>.row</code> creates two columns.
+- Inside the first column, a nested <code>.row</code> is created.
+- The nested columns use <code>.col-6</code> to split the first column into two equal parts.
+      </pre>
+    </details>
+    <script>
+      function applyTest5() {
+        const userCode = document.getElementById('test-5-code').value;
+        document.getElementById('test5').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <!-- ========== Exercise 6: Centered Column with Offset ========== -->
+  <div class="flex-container">
+    <h2>Exercise 6: Centered Column with Offset</h2>
+    <div class="instructions">
+      <p>Goal: Create a layout with one centered column that occupies 6 out of 12 grid columns on medium screens. Use offset classes to center it.</p>
+      <p class="hint">Hint: Try using <code>col-md-6 offset-md-3</code>.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 child ex6child">Centered Column</div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test6">
+      <div class="row">
+        <div>Centered Column</div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-6-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row">
+  <div>Centered Column</div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest6()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-md-6 offset-md-3"&gt;Centered Column&lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- <code>.col-md-6</code> makes the column take up 6 out of 12 parts (50% width) on medium screens.
+- <code>offset-md-3</code> pushes the column 3 columns to the right, centering it in the 12-column grid.
+      </pre>
+    </details>
+    <script>
+      function applyTest6() {
+        const userCode = document.getElementById('test-6-code').value;
+        document.getElementById('test6').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <!-- ========== Exercise 7: Reordering Columns ========== -->
+  <div class="flex-container">
+    <h2>Exercise 7: Reordering Columns</h2>
+    <div class="instructions">
+      <p>Goal: Create a row with two columns where the order changes on small devices. For example, column 2 should appear above column 1 on mobile.</p>
+      <p class="hint">Hint: Use Bootstrap’s order classes like <code>order-sm-first</code> and <code>order-sm-last</code>.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row">
+        <div class="col-md-6 child ex7child order-2 order-sm-2">Column 1</div>
+        <div class="col-md-6 child ex7child order-1 order-sm-1">Column 2</div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test7">
+      <div class="row">
+        <div>Column 1</div>
+        <div>Column 2</div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-7-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row">
+  <div>Column 1</div>
+  <div>Column 2</div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest7()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-md-6 order-2 order-sm-2"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col-md-6 order-1 order-sm-1"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- The order classes change the visual order of the columns.
+- On small devices, <code>order-sm-1</code> and <code>order-sm-2</code> determine which column comes first.
+- Here, Column 2 is set to appear before Column 1 on small screens.
+      </pre>
+    </details>
+    <script>
+      function applyTest7() {
+        const userCode = document.getElementById('test-7-code').value;
+        document.getElementById('test7').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <!-- ========== Exercise 8: Mixed Auto and Fixed Width Columns ========== -->
+  <div class="flex-container">
+    <h2>Exercise 8: Mixed Auto and Fixed Width Columns</h2>
+    <div class="instructions">
+      <p>Goal: Create a row with three columns where the first and third columns have automatic widths, and the middle column takes up the remaining space.</p>
+      <p class="hint">Hint: Use <code>col-auto</code> for the fixed-width columns and <code>col</code> for the flexible middle column.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row">
+        <div class="col-auto child ex8child">Auto</div>
+        <div class="col child ex8child">Flexible</div>
+        <div class="col-auto child ex8child">Auto</div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test8">
+      <div class="row">
+        <div>Auto</div>
+        <div>Flexible</div>
+        <div>Auto</div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-8-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row">
+  <div>Auto</div>
+  <div>Flexible</div>
+  <div>Auto</div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest8()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-auto"&gt;Auto&lt;/div&gt;
+  &lt;div class="col"&gt;Flexible&lt;/div&gt;
+  &lt;div class="col-auto"&gt;Auto&lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- <code>.col-auto</code> adjusts its width automatically based on its content.
+- <code>.col</code> in the middle expands to fill the remaining space.
+- This creates a layout with fixed widths on the sides and a flexible center.
+      </pre>
+    </details>
+    <script>
+      function applyTest8() {
+        const userCode = document.getElementById('test-8-code').value;
+        document.getElementById('test8').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <!-- ========== Exercise 9: Vertical Alignment ========== -->
+  <div class="flex-container">
+    <h2>Exercise 9: Vertical Alignment</h2>
+    <div class="instructions">
+      <p>Goal: Create a row with two columns of unequal height and vertically center their content.</p>
+      <p class="hint">Hint: Use the <code>align-items-center</code> class on the row and ensure the columns have content that makes them visibly different in height.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row align-items-center" style="height: 200px;">
+        <div class="col-md-6 child ex9child">Vertically centered content 1</div>
+        <div class="col-md-6 child ex9child">Vertically centered content 2<br />with extra text</div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test9">
+      <div class="row" style="height: 200px;">
+        <div>Vertically centered content 1</div>
+        <div>Vertically centered content 2<br/>with extra text</div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-9-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes -->
+<div class="row" style="height: 200px;">
+  <div>Vertically centered content 1</div>
+  <div>Vertically centered content 2<br/>with extra text</div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest9()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row align-items-center" style="height: 200px;"&gt;
+  &lt;div class="col-md-6"&gt;Content 1&lt;/div&gt;
+  &lt;div class="col-md-6"&gt;Content 2&lt;br/&gt;with extra text&lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- The class <code>align-items-center</code> on the row vertically centers the content.
+- <code>.col-md-6</code> divides the row equally on medium screens.
+- The fixed height (200px) allows you to clearly see the vertical alignment.
+      </pre>
+    </details>
+    <script>
+      function applyTest9() {
+        const userCode = document.getElementById('test-9-code').value;
+        document.getElementById('test9').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <!-- ========== Exercise 10: Complex Nested and Responsive Layout ========== -->
+  <div class="flex-container">
+    <h2>Exercise 10: Complex Nested and Responsive Layout</h2>
+    <div class="instructions">
+      <p>Goal: Build a complex layout combining several Bootstrap grid features. Create a parent row with two columns. In the left column, create a nested grid with two rows. The first nested row should have two columns (one using <code>col-8</code> and the other <code>col-4</code>). The second nested row should have three equal columns. The right column should display a single centered column using offset classes.</p>
+      <p class="hint">Hint: Work step-by-step. First, create the main two-column row. Then, focus on the nested grid in the left column and finally apply offsets in the right column.</p>
+    </div>
+    <p class="layout-title">The target layout:</p>
+    <div class="container parent">
+      <div class="row">
+        <!-- Left Column with Nested Rows -->
+        <div class="col-lg-8 child ex10child">
+          <div class="row mb-3">
+            <div class="col-8 child">Nested Row 1, Col 1</div>
+            <div class="col-4 child">Nested Row 1, Col 2</div>
+          </div>
+          <div class="row">
+            <div class="col child">Nested Row 2, Col 1</div>
+            <div class="col child">Nested Row 2, Col 2</div>
+            <div class="col child">Nested Row 2, Col 3</div>
+          </div>
+        </div>
+        <!-- Right Column Centered -->
+        <div class="col-lg-4">
+          <div class="row">
+            <div class="col-8 offset-2 child ex10child">Right Column</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="layout-title">Your current layout:</p>
+    <div class="container test-parent" id="test10">
+      <div class="row">
+        <div class="col-lg-8">
+          Left Column
+        </div>
+        <div class="col-lg-4">
+          Right Column
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="test-10-code" placeholder="Add your Bootstrap classes here...">
+<!-- Add necessary Bootstrap classes and nested structure -->
+<div class="row">
+  <div>
+    <!-- Left column with nested rows -->
+    <div>
+      <!-- First nested row -->
+      <div>
+        <div>Nested Row 1, Col 1</div>
+        <div>Nested Row 1, Col 2</div>
+      </div>
+      <!-- Second nested row -->
+      <div>
+        <div>Nested Row 2, Col 1</div>
+        <div>Nested Row 2, Col 2</div>
+        <div>Nested Row 2, Col 3</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <!-- Right column -->
+    <div>
+      <div>Right Column</div>
+    </div>
+  </div>
+</div>
+      </textarea>
+    </div>
+    <button onclick="applyTest10()">Apply Changes</button>
+    <details>
+      <summary>Show Solution</summary>
+      <pre>
+&lt;div class="row"&gt;
+  &lt;div class="col-lg-8"&gt;
+    &lt;div class="row mb-3"&gt;
+      &lt;div class="col-8"&gt;Nested Row 1, Col 1&lt;/div&gt;
+      &lt;div class="col-4"&gt;Nested Row 1, Col 2&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col"&gt;Nested Row 2, Col 1&lt;/div&gt;
+      &lt;div class="col"&gt;Nested Row 2, Col 2&lt;/div&gt;
+      &lt;div class="col"&gt;Nested Row 2, Col 3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-lg-4"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-8 offset-2"&gt;Right Column&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+Explanation:
+- The parent <code>.row</code> splits the container into two columns.
+- In the left column (<code>.col-lg-8</code>), two nested rows are created:
+  • The first nested row uses <code>.col-8</code> and <code>.col-4</code> for an 8/4 split.
+  • The second nested row uses <code>.col</code> for equal-width columns.
+- The right column (<code>.col-lg-4</code>) centers its content using offset classes (<code>offset-2</code>).
+      </pre>
+    </details>
+    <script>
+      function applyTest10() {
+        const userCode = document.getElementById('test-10-code').value;
+        document.getElementById('test10').innerHTML = userCode;
+      }
+    </script>
+  </div>
+
+  <footer>
+    <p>Made by RMIT Vietnam with Love ❤️ - COSC3060</p>
+  </footer>
+</body>
 </html>
