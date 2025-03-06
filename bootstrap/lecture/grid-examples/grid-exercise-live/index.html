@@ -563,8 +563,8 @@ Explanation:
     <p class="layout-title">The target layout:</p>
     <div class="container parent">
       <div class="row">
-        <div class="col-md-6 child ex7child order-2 order-sm-2">Column 1</div>
-        <div class="col-md-6 child ex7child order-1 order-sm-1">Column 2</div>
+        <div class="col-sm-6 child ex7child order-2 order-sm-1">Column 1</div>
+        <div class="col-sm-6 child ex7child order-1 order-sm-2">Column 2</div>
       </div>
     </div>
     <p class="layout-title">Your current layout:</p>
@@ -588,14 +588,13 @@ Explanation:
       <summary>Show Solution</summary>
       <pre>
 &lt;div class="row"&gt;
-  &lt;div class="col-md-6 order-2 order-sm-2"&gt;Column 1&lt;/div&gt;
-  &lt;div class="col-md-6 order-1 order-sm-1"&gt;Column 2&lt;/div&gt;
+  &lt;div class="col-sm-6 order-2 order-sm-1"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col-sm-6 order-1 order-sm-2"&gt;Column 2&lt;/div&gt;
 &lt;/div&gt;
 
 Explanation:
-- The order classes change the visual order of the columns.
-- On small devices, <code>order-sm-1</code> and <code>order-sm-2</code> determine which column comes first.
-- Here, Column 2 is set to appear before Column 1 on small screens.
+- The numeric order classes reorder the columns on small devices.
+- Here, Column 2 (with order 1) will appear above Column 1 (with order 2) on small screens.
       </pre>
     </details>
     <script>
