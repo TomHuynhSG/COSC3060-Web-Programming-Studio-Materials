@@ -1,13 +1,13 @@
-const joke = require('give-me-a-joke');
-const superheroes = require('superheroes');
-const chalk = require('chalk');
+import joke from 'give-me-a-joke';
+import {randomSuperhero} from 'superheroes';
+import chalk from 'chalk';
 
 // Adding color to terminal string output using chalk package
 const coloredText = chalk.red('This is red text using chalk package');
 console.log(coloredText);
 
 // Generating a superhero name using superheroes package
-const superheroName = superheroes.random();
+const superheroName = randomSuperhero();
 console.log(chalk.green('Superhero name of the day:'));
 console.log(chalk.cyan(superheroName));
 

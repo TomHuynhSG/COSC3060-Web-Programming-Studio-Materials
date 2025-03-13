@@ -8,11 +8,10 @@
   },
   "author": "Tom Huynh",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^5.4.1",
     "give-me-a-joke": "^0.5.1",
-    "superheroes": "^3.0.0"
+    "superheroes": "^4.0.0"
   }
 }
-
-
