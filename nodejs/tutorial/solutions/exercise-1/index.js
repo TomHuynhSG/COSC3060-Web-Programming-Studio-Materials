@@ -1,5 +1,5 @@
 // // Import chalk library
-const chalk = require('chalk');
+import chalk from 'chalk';
 
 // Get user name and age from command line arguments
 const [name, age] = process.argv.slice(2);

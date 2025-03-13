@@ -8,9 +8,10 @@
   },
   "author": "Tom Huynh",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "cat-ascii-faces": "^2.0.0",
-    "chalk": "^2.4.2",
+    "chalk": "^5.4.1",
     "figlet": "^1.6.0"
   }
 }

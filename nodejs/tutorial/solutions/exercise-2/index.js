@@ -1,6 +1,6 @@
-const figlet = require('figlet');
-const chalk = require('chalk');
-let cats = require('cat-ascii-faces');
+import figlet from 'figlet';
+import chalk from 'chalk';
+import cats from 'cat-ascii-faces';
 
 // Check if the text and color arguments are provided
 if (process.argv.length < 3) {
