@@ -14,7 +14,7 @@ console.log(`Age: ${highlightedAge}`);
 
 
 // Extra challenge Solution
-// const readline = require('readline');
+// import * as readline from 'readline';
 
 // const rl = readline.createInterface({
 //     input: process.stdin,
