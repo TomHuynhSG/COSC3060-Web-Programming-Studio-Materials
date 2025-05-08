@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://admin:Cosc_3060@cluster0.hus5d0u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://tom:mypassword@cluster0.fzbjkul.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
     console.log("Connected to MongoDB Atlas");
   })
@@ -93,3 +93,5 @@ app.post('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+module.exports = { User }; // Export User model
